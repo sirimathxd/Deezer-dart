@@ -1,0 +1,23 @@
+name: deezer
+description: A Dart package for easy music downloading from Deezer.
+version: 1.0.0
+repository: https://github.com/sirimathxd/Deezer-dart
+homepage: https://github.com/sirimathxd/Deezer-dart
+issue_tracker: https://github.com/sirimathxd/Deezer-dart/issues
+environment:
+  sdk: ^3.3.1
+
+# Add regular dependencies here.
+dependencies:
+  blowfish: ^1.0.1
+  cookie_jar: ^4.0.8
+  crypto: ^3.0.3
+  dio: ^5.4.3+1
+  dio_cookie_manager: ^3.1.1
+  encrypt: ^5.0.2
+  pointycastle: ">=3.2.0 < 3.8.0"
+  # path: ^1.8.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
