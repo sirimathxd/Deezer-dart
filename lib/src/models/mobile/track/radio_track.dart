@@ -83,9 +83,11 @@ class RadioTrack extends FlowTrack {
       explicitContentLyrics: parseInt(json['explicit_content_lyrics']),
       explicitContentCover: parseInt(json['explicit_content_cover']),
       preview: json['preview'],
-      alternative: parseJson(json['alternative'], (json) => RadioTrack.fromJson(json)),
+      alternative:
+          parseJson(json['alternative'], (json) => RadioTrack.fromJson(json)),
       md5Image: json['md5_image'],
-      artist: parseJson(json['artist'], (json) => ArtistWithPicture.fromJson(json)),
+      artist:
+          parseJson(json['artist'], (json) => ArtistWithPicture.fromJson(json)),
       album: parseJson(json['album'], (json) => BaseAlbum.fromJson(json)),
       type: json['type'],
     );

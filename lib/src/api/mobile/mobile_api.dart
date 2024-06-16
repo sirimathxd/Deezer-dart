@@ -182,14 +182,15 @@ String getUserPath(USER user, String id) {
 // This function takes a Dio client and a URL as input and returns a Response
 Future<Response> get(Dio client, String url) async {
   try {
-    Response response = await client.get(mobileUrl+url);
+    Response response = await client.get(mobileUrl + url);
     // print('Response: ${response.data}');
     if (response.statusCode == 200) {
       return response; // return response if request is successful
     } else {
       throw DeezerException(
         type: DeezerExceptionType.invalidResponse,
-        message: "Invalid Responce: ${response.statusCode} and response: ${response.data}",
+        message:
+            "Invalid Responce: ${response.statusCode} and response: ${response.data}",
       );
     }
   } catch (e, s) {

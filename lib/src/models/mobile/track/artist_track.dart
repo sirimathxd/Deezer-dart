@@ -83,7 +83,8 @@ class ArtistTrack extends AlbumTrack {
       explicitContentLyrics: parseInt(json['explicit_content_lyrics']),
       explicitContentCover: parseInt(json['explicit_content_cover']),
       preview: json['preview'],
-      contributors: parseList(json['contributors'], (e) => ArtistWithRole.fromJson(e)),
+      contributors:
+          parseList(json['contributors'], (e) => ArtistWithRole.fromJson(e)),
       md5Image: json['md5_image'],
       artist: parseJson(json['artist'], (e) => BaseArtist.fromJson(e)),
       album: parseJson(json['album'], (e) => BaseAlbum.fromJson(e)),

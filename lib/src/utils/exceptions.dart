@@ -138,8 +138,9 @@ class DeezerException implements Exception {
 
   factory DeezerException.unknownException(
     String message,
-    Object e, StackTrace s,
-    ) {
+    Object e,
+    StackTrace s,
+  ) {
     return DeezerException(
       type: DeezerExceptionType.unknown,
       message: message,
@@ -152,7 +153,7 @@ class DeezerException implements Exception {
     String message,
     Object e,
     StackTrace s,
-    ) {
+  ) {
     return DeezerException(
       type: DeezerExceptionType.decryptionFailed,
       message: message,

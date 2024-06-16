@@ -108,7 +108,8 @@ class UserArtists {
 
   factory UserArtists.fromJson(Map<String, dynamic> json) {
     return UserArtists(
-      data: (json['data'] as List?)?.map((i) => UserArtist.fromJson(i)).toList(),
+      data:
+          (json['data'] as List?)?.map((i) => UserArtist.fromJson(i)).toList(),
       total: json['total'],
     );
   }

@@ -44,7 +44,8 @@ class BaseTrack {
       duration: duration ?? this.duration,
       rank: rank ?? this.rank,
       explicitLyrics: explicitLyrics ?? this.explicitLyrics,
-      explicitContentLyrics: explicitContentLyrics ?? this.explicitContentLyrics,
+      explicitContentLyrics:
+          explicitContentLyrics ?? this.explicitContentLyrics,
       explicitContentCover: explicitContentCover ?? this.explicitContentCover,
       preview: preview ?? this.preview,
       md5Image: md5Image ?? this.md5Image,

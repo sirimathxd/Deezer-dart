@@ -8,7 +8,8 @@ extension DeezerMobile on Deezer {
   // ------- Album API -------
 
   // Get Album details
-  Future<Album?> getAlbum(String id, {
+  Future<Album?> getAlbum(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -26,7 +27,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Album tracks
-  Future<AlbumTracks?> getAlbumTracks(String id, {
+  Future<AlbumTracks?> getAlbumTracks(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -46,7 +48,8 @@ extension DeezerMobile on Deezer {
   // ------- Artist API -------
 
   // Get Artist details
-  Future<Artist?> getArtist(String id, {
+  Future<Artist?> getArtist(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -64,7 +67,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Artist top tracks
-  Future<ArtistTracks?> getArtistTopTracks(String id, {
+  Future<ArtistTracks?> getArtistTopTracks(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -82,7 +86,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Artist albums
-  Future<ArtistAlbums?> getArtistAlbums(String id, {
+  Future<ArtistAlbums?> getArtistAlbums(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -100,7 +105,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Artist related artists
-  Future<Artists?> getArtistRelated(String id, {
+  Future<Artists?> getArtistRelated(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -118,7 +124,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Artist radios
-  Future<ArtistRadios?> getArtistRadios(String id, {
+  Future<ArtistRadios?> getArtistRadios(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -136,7 +143,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Artist playlists
-  Future<ArtistPlaylists?> getArtistPlaylists(String id, {
+  Future<ArtistPlaylists?> getArtistPlaylists(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -155,7 +163,8 @@ extension DeezerMobile on Deezer {
 
   // ------- Chart API -------
   // Get Chart
-  Future<Chart?> getChart(String id, {
+  Future<Chart?> getChart(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -173,7 +182,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Chart top tracks
-  Future<ChartTracks?> getChartTopTracks(String id, {
+  Future<ChartTracks?> getChartTopTracks(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -191,7 +201,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Chart top albums
-  Future<ChartAlbums?> getChartTopAlbums(String id, {
+  Future<ChartAlbums?> getChartTopAlbums(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -209,7 +220,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Chart top artists
-  Future<ChartArtists?> getChartTopArtists(String id, {
+  Future<ChartArtists?> getChartTopArtists(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -227,7 +239,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Chart top playlists
-  Future<ChartPlaylists?> getChartTopPlaylists(String id, {
+  Future<ChartPlaylists?> getChartTopPlaylists(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -245,7 +258,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Chart top podcasts
-  Future<ChartPodcasts?> getChartTopPodcasts(String id, {
+  Future<ChartPodcasts?> getChartTopPodcasts(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -283,7 +297,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Editorial details
-  Future<Genre?> getEditorial(String id, {
+  Future<Genre?> getEditorial(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -321,7 +336,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Genre details
-  Future<Genre?> getGenre(String id, {
+  Future<Genre?> getGenre(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -339,7 +355,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Genre artists
-  Future<ChartArtists?> getGenreArtists(String id, {
+  Future<ChartArtists?> getGenreArtists(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -357,7 +374,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Genre radios
-  Future<Radios?> getGenreRadios(String id, {
+  Future<Radios?> getGenreRadios(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -377,7 +395,8 @@ extension DeezerMobile on Deezer {
   // ------- Playlist API -------
 
   // Get Playlist details
-  Future<Playlist?> getPlaylist(String id, {
+  Future<Playlist?> getPlaylist(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -395,7 +414,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Playlist tracks
-  Future<PlaylistTracks?> getPlaylistTracks(String id, {
+  Future<PlaylistTracks?> getPlaylistTracks(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -415,7 +435,8 @@ extension DeezerMobile on Deezer {
   // ------- Radio API -------
 
   // Get Radio details
-  Future<Radio?> getRadio(String id, {
+  Future<Radio?> getRadio(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -433,7 +454,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Radio tracks
-  Future<RadioTracks?> getRadioTracks(String id, {
+  Future<RadioTracks?> getRadioTracks(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -451,7 +473,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Radio genres
-  Future<RadioGenres?> getRadioGenres(String id, {
+  Future<RadioGenres?> getRadioGenres(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -469,7 +492,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Radio top
-  Future<Radios?> getRadioTop(String id, {
+  Future<Radios?> getRadioTop(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -487,7 +511,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get Radio list
-  Future<Radios?> getRadioList(String id, {
+  Future<Radios?> getRadioList(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -507,7 +532,8 @@ extension DeezerMobile on Deezer {
   // ------- Search API -------
 
   // Search for albums
-  Future<SearchAlbums?> searchAlbums(String query, {
+  Future<SearchAlbums?> searchAlbums(
+    String query, {
     bool throwOnError = false,
   }) async {
     try {
@@ -525,7 +551,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Search for artists
-  Future<Artists?> searchArtists(String query, {
+  Future<Artists?> searchArtists(
+    String query, {
     bool throwOnError = false,
   }) async {
     try {
@@ -543,7 +570,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Search for playlists
-  Future<ChartPlaylists?> searchPlaylists(String query, {
+  Future<ChartPlaylists?> searchPlaylists(
+    String query, {
     bool throwOnError = false,
   }) async {
     try {
@@ -560,7 +588,6 @@ extension DeezerMobile on Deezer {
     }
   }
 
-
   // Search for tracks
   Future<AlbumTracks?> searchTracks(
     String query, {
@@ -576,16 +603,17 @@ extension DeezerMobile on Deezer {
         rethrow;
       } else {
         if (throwOnError) {
-        rethrow;
-      } else {
-        return null;
-      }
+          rethrow;
+        } else {
+          return null;
+        }
       }
     }
   }
 
   // Search for users
-  Future<UsersWithPic?> searchUsers(String query, {
+  Future<UsersWithPic?> searchUsers(
+    String query, {
     bool throwOnError = false,
   }) async {
     try {
@@ -603,7 +631,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Search for radios
-  Future<Radios?> searchRadios(String query, {
+  Future<Radios?> searchRadios(
+    String query, {
     bool throwOnError = false,
   }) async {
     try {
@@ -623,7 +652,8 @@ extension DeezerMobile on Deezer {
   // ------- User API -------
 
   // Get User details
-  Future<User?> getUser(String id, {
+  Future<User?> getUser(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -641,7 +671,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User albums
-  Future<UserAlbums?> getUserAlbums(String id, {
+  Future<UserAlbums?> getUserAlbums(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -659,7 +690,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User artists
-  Future<UserArtists?> getUserArtists(String id, {
+  Future<UserArtists?> getUserArtists(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -677,7 +709,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User tracks
-  Future<UserTracks?> getUserTracks(String id, {
+  Future<UserTracks?> getUserTracks(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -695,7 +728,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User radios
-  Future<Radios?> getUserRadios(String id, {
+  Future<Radios?> getUserRadios(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -713,7 +747,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User chart tracks
-  Future<UserChartTracks?> getUserChartTracks(String id, {
+  Future<UserChartTracks?> getUserChartTracks(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -731,7 +766,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User chart albums
-  Future<SearchAlbums?> getUserChartAlbums(String id, {
+  Future<SearchAlbums?> getUserChartAlbums(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -749,7 +785,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User chart artists
-  Future<Artists?> getUserChartArtists(String id, {
+  Future<Artists?> getUserChartArtists(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -767,7 +804,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User chart playlists
-  Future<ChartPlaylists?> getUserChartPlaylists(String id, {
+  Future<ChartPlaylists?> getUserChartPlaylists(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -785,7 +823,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User flow
-  Future<FlowTracks?> getUserFlow(String id, {
+  Future<FlowTracks?> getUserFlow(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -803,7 +842,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User followings
-  Future<UsersWithPic?> getUserFollowings(String id, {
+  Future<UsersWithPic?> getUserFollowings(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -821,7 +861,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User followers
-  Future<UsersWithPic?> getUserFollowers(String id, {
+  Future<UsersWithPic?> getUserFollowers(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -839,7 +880,8 @@ extension DeezerMobile on Deezer {
   }
 
   // Get User playlists
-  Future<UserPlaylists?> getUserPlaylists(String id, {
+  Future<UserPlaylists?> getUserPlaylists(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {

@@ -147,7 +147,8 @@ class Album extends BaseAlbum {
       explicitLyrics: json['explicit_lyrics'],
       explicitContentLyrics: json['explicit_content_lyrics'],
       explicitContentCover: json['explicit_content_cover'],
-      contributors: parseList(json['contributors'], (i) => ArtistWithRole.fromJson(i)),
+      contributors:
+          parseList(json['contributors'], (i) => ArtistWithRole.fromJson(i)),
       artist: parseJson(json['artist'], (i) => ArtistWithPicture.fromJson(i)),
       type: json['type'],
       tracks: parseJson(json['tracks'], (i) => AlbumTracks.fromJson(i)),

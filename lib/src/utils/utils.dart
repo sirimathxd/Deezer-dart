@@ -112,7 +112,7 @@ String? parseString(dynamic value) {
   throw ArgumentError('Invalid type for string field: ${value.runtimeType}');
 }
 
-String getlink(String? url,String typ,dynamic id) {
+String getlink(String? url, String typ, dynamic id) {
   if (url == null) {
     return 'https://www.deezer.com/$typ/$id';
   }

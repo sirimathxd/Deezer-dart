@@ -181,7 +181,7 @@ Future<Response> removeFavoriteSong(
     } else {
       return res;
     }
-  } catch (e,s) {
+  } catch (e, s) {
     log('Error: $e', stackTrace: s);
     if (e is DioException) {
       throw DeezerException(

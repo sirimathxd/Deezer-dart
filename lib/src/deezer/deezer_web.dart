@@ -1,9 +1,9 @@
 part of 'deezer.dart';
+
 /// The [Deezer] class is the main class of the package.
 /// It is used to interact with the Deezer Web API.
 
 extension DeezerWeb on Deezer {
-  
   // -------------------------- Web API --------------------------
 
   // Get Favorite Songs
@@ -23,7 +23,8 @@ extension DeezerWeb on Deezer {
   }
 
   // Add Favorite Songs
-  Future<bool> addFavSongs(List<String> ids, {
+  Future<bool> addFavSongs(
+    List<String> ids, {
     bool throwOnError = false,
   }) async {
     try {
@@ -36,7 +37,8 @@ extension DeezerWeb on Deezer {
   }
 
   // Remove Favorite Songs
-  Future<bool> removeFavSongs(List<String> ids, {
+  Future<bool> removeFavSongs(
+    List<String> ids, {
     bool throwOnError = false,
   }) async {
     try {
@@ -49,7 +51,8 @@ extension DeezerWeb on Deezer {
   }
 
   // Get Track info
-  Future<Track?> getTrack(String id, {
+  Future<Track?> getTrack(
+    String id, {
     bool throwOnError = false,
   }) async {
     try {
@@ -65,7 +68,8 @@ extension DeezerWeb on Deezer {
   }
 
   // Get Tracks info
-  Future<Tracks?> getTracks(List<String> ids, {
+  Future<Tracks?> getTracks(
+    List<String> ids, {
     bool throwOnError = false,
   }) async {
     try {
@@ -79,5 +83,4 @@ extension DeezerWeb on Deezer {
       }
     }
   }
-
 }

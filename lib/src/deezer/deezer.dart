@@ -164,7 +164,7 @@ class Deezer {
         track.results.data.mediaVersion,
       );
 
-      // print("download link: $url"); 
+      // print("download link: $url");
 
       // Get Encrypted song data
       Response response = await client.get(
@@ -228,7 +228,6 @@ class Deezer {
         url,
         options: Options(responseType: ResponseType.stream),
       );
-
 
       // Decrypt and yield song data
       yield* decryptStream(

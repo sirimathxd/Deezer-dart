@@ -26,7 +26,7 @@ class PlaylistTracks {
 
   factory PlaylistTracks.fromJson(Map<String, dynamic> json) {
     return PlaylistTracks(
-      data:parseList(json['data'], (v) => AlbumTrack.fromJson(v)),
+      data: parseList(json['data'], (v) => AlbumTrack.fromJson(v)),
       total: parseTotal(json['total'], json['data']),
       checksum: json['checksum'],
     );

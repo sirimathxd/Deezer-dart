@@ -387,7 +387,7 @@ void main() {
       await file.writeAsBytes(songData.data);
     }
     expect(await file.exists(), isTrue);
-  log("");
+    log("");
   });
 
   test('Test downloading a song using stream', () async {
@@ -400,6 +400,6 @@ void main() {
     await sink.flush();
     await sink.close();
     expect(await streamFile.exists(), isTrue);
-  log("");
+    log("");
   });
 }
