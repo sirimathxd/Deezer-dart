@@ -3,15 +3,14 @@ import 'dart:io';
 import 'package:deezer/deezer.dart';
 
 void main() async {
-  String arl = "get it from your browser cookies";
-
+  String arl = "GET_YOUR_ARL_FROM_DEEZER_COOKIE";
   // create a deezer instance
   Deezer deezer = await Deezer.create(arl: arl);
 
   // search for a song
-  var result = await deezer.search("Hello");
+  SearchAlbums? result = await deezer.searchAlbums("Hello");
   if (result != null) {
-    // print(result.toJson());
+    print(result.total);
   } else {
     print("Result is null");
   }
@@ -49,24 +48,37 @@ void main() async {
   print("Fav: $addfav");
 
   // download a song
-  final song = await deezer.getSong("1439299952");
+  final song = await deezer.getSong(
+    "1439299952",
+    onProgress: (received, total) {
+      print("received: $received, total: $total");
+    },
+  );
   // write the song to a file
-  if (song!.data != null) {
-    File file = File("song.mp3");
-    file.writeAsBytesSync(song.data!);
+  File file = File("song.mp3");
+  if (song != null) {
+    await file.writeAsBytes(song.data);
     print("Song downloaded");
   } else {
     print("Song is null");
   }
 
   // download a song using stream
-  final stream = deezer.streamSong("1439299952");
-  File file = File("stream_song.mp3");
-  IOSink sink = file.openWrite();
+  final stream = deezer.streamSong(
+    "1439299952",
+    onProgress: (received, total) {
+      print("received stream: $received, total: $total");
+    },
+  );
+  File file2 = File("stream_song.mp3");
+  IOSink sink = file2.openWrite();
   await for (List<int> chunk in stream) {
     sink.add(chunk);
   }
   await sink.flush();
   await sink.close();
   print("Stream song downloaded");
+
+  //close the client
+  deezer.close();
 }

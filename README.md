@@ -50,7 +50,7 @@ To use this package
     
 ## Usage 
 
- 1. **Import the Package:** Import the `deezer` package in your Dart file:
+1. **Import the Package:** Import the `deezer` package in your Dart file:
  
     `import 'package:deezer/deezer.dart';` 
     
@@ -63,44 +63,120 @@ To use this package
     Deezer deezer = await Deezer.create(arl: arl);
     ```
     
-4.  **Search for a Song:** Use the `search` method to search for a song:
+    ### Album Functions
     
-    ```
-    var searchResult = await deezer.search("Hello");
-    ```
-    
-5.  **Get Track Information:** Use the `getTrack` method to retrieve information about a specific track:
-    
-    ```
-    var trackInfo = await deezer.getTrack("138545995");
-    ```
-    
-6.  **Get Tracks Information:** Use the `getTracks` method to retrieve information about multiple tracks:
-    
-    ```
-    var tracksInfo = await deezer.getTracks(["138545995", "1439299952"]);
-    ``` 
-    
-7.  **Get Favorite Songs:** Use the `favSongs` method to retrieve information about favorite songs:
-    
-    ```
-    var favoriteSongs = await deezer.favSongs();
-    ```
+    | Function           | Description                |
+    | :----------------- | :------------------------- |
+    | getAlbum           | Get album information      |
+    | getAlbumTracks     | Get album tracks           |
 
-8.  **Add Favorite Songs:** Use the `addFavSongs` method to add songs to favorites:
-     ```
-    bool addFav = await deezer.addFavSongs(["1439299952"]);
-    print("Add Favorites: $addFav");
-    ```
+    ### Artist Functions
 
-9.  **Remove Favorite Songs:** Use the `removeFavSongs` method to remove songs from favorites:
+    | Function           | Description                |
+    | :----------------- | :------------------------- |
+    | getArtist          | Get artist information     |
+    | getArtistTopTracks | Get artist top tracks      |
+    | getArtistAlbums    | Get artist albums          |
+    | getArtistRelated   | Get related artists        |
+    | getArtistRadios    | Get artist radios          |
+    | getArtistPlaylists | Get artist playlists       |
 
-    ``` 
-    bool removeFav = await deezer.removeFavSongs(["1439299952"]);
-    print("Remove Favorites: $removeFav");
-    ```
+    ### Chart Functions
 
-10.  **Download a Song:** Use the `getSong` method to download a song:
+    | Function            | Description                |
+    | :-----------------  | :------------------------- |
+    | getChart            | Get chart                  |
+    | getChartTopTracks   | Get chart top tracks       |
+    | getChartTopAlbums   | Get chart top albums       |
+    | getChartTopArtists  | Get chart top artists      |
+    | getChartTopPlaylists| Get chart top playlists    |
+    | getChartTopPodcasts | Get chart top podcasts     |
+
+    ### Editor Functions
+
+    | Function            | Description                |
+    | :-----------------  | :------------------------- |
+    | getEditorial        | Get editorial              |
+    | getEditorials       | Get editorials             |
+
+    ### Genre Functions
+
+    | Function            | Description                |
+    | :-----------------  | :------------------------- |
+    | getGenre            | Get genre details          |
+    | getGenres           | Get details list of genres |
+    | getGenreArtists     | Get genre artists          |
+    | getGenreRadios      | Get genre radios           |
+
+    ### Playlist Functions
+
+    | Function            | Description                |
+    | :-----------------  | :------------------------- |
+    | getPlaylist         | Get playlist details       |
+    | getPlaylistTracks   | Get playlist tracks        |
+
+    ### Radio Functions
+
+    | Function            | Description                |
+    | :-----------------  | :------------------------- |
+    | getRadio            | Get radio details          |
+    | getRadioTracks      | Get radio tracks           |
+    | getRadioGenres      | Get radio genres           |
+    | getRadioTop         | Get top radios             |
+    | getRadioLists       | Get radio lists            |
+
+    ### Search Functions
+
+    | Function            | Description                |
+    | :-----------------  | :------------------------- |
+    | searchAlbums        | Search for albums          |
+    | searchArtists       | Search for artists         |
+    | searchPlaylists     | Search for playlists       |
+    | searchTracks        | Search for tracks          |
+    | searchUsers         | Search for users           |
+    | searchRadios        | Search for radios          |
+
+    ### User Functions
+
+    | Function             | Description                |
+    | :-----------------   | :------------------------- |
+    | getUser              | Get user details           |
+    | getUserAlbums        | Get user albums            |
+    | getUserArtists       | Get user artists           |
+    | getUserTracks        | Get user tracks            |
+    | getUserRadios        | Get user radios            |
+    | getUserChartTracks   | Get user chart tracks      |
+    | getUserChartAlbums   | Get user chart albums      |
+    | getUserChartArtists  | Get user chart artists     |
+    | getUserChartPlaylists| Get user chart playlists   |
+    | getUserFlow          | Get user flow              |
+    | getUserFollowings    | Get user followings        |
+    | getUserFollowers     | Get user followers         |
+    | getUserPlaylists     | Get user playlists         |
+
+    ### Track Functions
+
+    | Function             | Description                |
+    | :-----------------   | :------------------------- |
+    | getTrack             | Get track details          |
+    | getTracks            | Get track details list     |
+
+    ### Favorite Functions
+
+    | Function             | Description                |
+    | :-----------------   | :------------------------- |
+    | favSongs             | Get favorite songs         |
+    | addFavSongs          | Add favorite songs         |
+    | removeFavSongs       | Remove favorite songs      |
+
+    ### Download Functions
+
+    | Function             | Description                |
+    | :-----------------   | :------------------------- |
+    | getSong              | Download a song            |
+    | streamSong           | Stream a song              |
+
+4.  **Download a Song:** Use the `getSong` method to download a song:
     
      ```
      final song = await deezer.getSong("1439299952");
@@ -114,7 +190,7 @@ To use this package
      }      
      ```     
 
-11. **Stream a Song:** Use the `streamSong` method to stream a song:
+5. **Stream a Song:** Use the `streamSong` method to stream a song:
 
      ```
      final stream = deezer.streamSong("1439299952");

@@ -1,14 +1,14 @@
-import 'package:deezer/src/models/track/track.dart';
+import 'package:deezer/src/models/web/track/track.dart';
 
 class SongData {
-  List<int>? data;
-  Track? track;
+  List<int> data;
+  Track track;
   SongData({required this.data, required this.track});
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'data': data,
-      'track': track!.toJson(),
+      'track': track.toJson(),
     };
   }
 

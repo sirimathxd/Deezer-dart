@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'package:crypto/crypto.dart';
+import 'package:deezer/src/utils/exceptions.dart';
 import 'package:dio/dio.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:blowfish/blowfish.dart';
@@ -10,12 +12,22 @@ Future<List<int>> decryptBlowfish(
     List<int> encryptedData, Blowfish blowfish) async {
   try {
     if (encryptedData.length % 8 != 0) {
-      throw Exception("Invalid data length");
+      throw DeezerException(
+        type: DeezerExceptionType.decryptionFailed,
+        message: "Invalid encrypted data length",
+      );
     }
     return blowfish.decryptCBC(encryptedData, [0, 1, 2, 3, 4, 5, 6, 7]);
   } catch (e) {
-    print("Failed to decrypt Blowfish: $e");
-    return [];
+    log("Failed to decrypt Blowfish: $e");
+    if (e is DeezerException) {
+      rethrow;
+    } else {
+      throw DeezerException(
+        type: DeezerExceptionType.decryptionFailed,
+        message: "Failed to decrypt Blowfish: $e",
+      );
+    }
   }
 }
 
@@ -33,8 +45,15 @@ String generateBlowfishKey(String id) {
     }
     return bfKey;
   } catch (e) {
-    print("Failed to generate Blowfish key: $e");
-    return "";
+    log("Failed to generate Blowfish key: $e");
+    if (e is DeezerException) {
+      rethrow;
+    } else {
+      throw DeezerException(
+        type: DeezerExceptionType.decryptionFailed,
+        message: "Failed to generate Blowfish key: $e",
+      );
+    }
   }
 }
 
@@ -52,29 +71,48 @@ Future<String> getDownloadLink(
     url = "${md5.convert(bytes)}¤$url¤";
     int padding = 16 - (url.codeUnits.length % 16);
     List<int> text = url.codeUnits + List.filled(padding, padding);
+    // create encrypter with AES key and mode ECB
     final encrypter = Encrypter(
-      AES(Key.fromUtf8("jo6aey6haid2Teih"), mode: AESMode.ecb),
+      AES(
+        Key.fromUtf8("jo6aey6haid2Teih"),
+        mode: AESMode.ecb,
+      ),
     );
-    final encrypted = encrypter.encryptBytes(text, iv: IV.fromLength(16));
+    final encrypted = encrypter.encryptBytes(
+      text,
+      iv: IV.fromLength(16),
+    );
     return "https://e-cdns-proxy-${md5origin[0]}.dzcdn.net/mobile/1/${encrypted.base16}";
   } catch (e) {
-    print("Failed to get download link: $e");
-    return "";
+    log("Failed to get download link: $e");
+    if (e is DeezerException) {
+      rethrow;
+    } else {
+      throw DeezerException(
+        type: DeezerExceptionType.decryptionFailed,
+        message: "Failed to get download link: $e",
+      );
+    }
   }
 }
 
 // Function to decrypt media
 Future<List<int>> decryptMedia(List<int> data, String sid) async {
   try {
+    // generate Blowfish key
     String bfkey = generateBlowfishKey(sid);
-    if (bfkey.isEmpty || bfkey.length != 16) {
-      throw Exception("Invalid Blowfish key");
+    if (bfkey.length != 16) {
+      throw DeezerException(
+        type: DeezerExceptionType.decryptionFailed,
+        message: "Invalid Blowfish key",
+      );
     }
-    // print(bfkey);
+    // create Blowfish instance
     final blowfish = newBlowfish(utf8.encode(bfkey));
     int streamLen = data.length;
     int chunksize = 2048;
     List<int> dest = [];
+    // decrypt media data in chunks (2048 bytes) using Blowfish algorithm
     for (int position = 0, i = 0;
         position < streamLen;
         position += chunksize, i++) {
@@ -86,20 +124,33 @@ Future<List<int>> decryptMedia(List<int> data, String sid) async {
       }
       List<int> buf = data.sublist(position, position + chunksize);
       if (i % 3 == 0 && chunksize == 2048) {
+        // every 3rd chunk is decrypted using Blowfish algorithm
         chunk = await decryptBlowfish(buf, blowfish);
       } else {
         chunk = buf;
       }
+      // add chunk to destination list
       dest.addAll(chunk);
     }
     return dest;
   } catch (e) {
-    print("Failed to decrypt media: $e");
-    return [];
+    log("Failed to decrypt media: $e");
+    if (e is DeezerException) {
+      rethrow;
+    } else {
+      throw DeezerException(
+        type: DeezerExceptionType.decryptionFailed,
+        message: "Failed to decrypt media: $e",
+      );
+    }
   }
 }
 
-Stream<List<int>> decryptStream(Response response, String sid) async* {
+Stream<List<int>> decryptStream(
+  Response response,
+  String sid, {
+  ProgressCallback? onProgress,
+}) async* {
   try {
     List<int> buffer = [];
     int totalBytesReceived = 0;
@@ -108,35 +159,51 @@ Stream<List<int>> decryptStream(Response response, String sid) async* {
     await for (List<int> data in response.data.stream) {
       buffer.addAll(data);
       while (buffer.length >= 2048) {
-        // print("Buffer size: ${buffer.length}");
         List<int> block = buffer.sublist(0, 2048);
         if (blockCount % 3 == 0) {
-          // print("Decrypting block $blockCount");
-          // Decrypt the block of data
           String bfkey = generateBlowfishKey(sid);
           if (bfkey.isEmpty || bfkey.length != 16) {
-            throw Exception("Invalid Blowfish key");
+            throw DeezerException(
+              type: DeezerExceptionType.decryptionFailed,
+              message: "Invalid Blowfish key length : ${bfkey.length}",
+            );
           }
           final blowfish = newBlowfish(utf8.encode(bfkey));
           if (block.length != 2048) {
-            throw Exception("Invalid block size");
+            throw DeezerException(
+              type: DeezerExceptionType.decryptionFailed,
+              message: "Invalid block length: ${block.length}",
+            );
           }
           yield await decryptBlowfish(block, blowfish);
         } else {
-          // print("Passing block $blockCount");
           yield block;
         }
         buffer.removeRange(0, 2048);
         totalBytesReceived += 2048;
-        // print("Total bytes received: $totalBytesReceived");
         blockCount++;
-      } // end while
+      }
+
       if (buffer.length + totalBytesReceived == response.data.contentLength) {
-        // print("end of stream, yielding remaining buffer");
+        totalBytesReceived += buffer.length;
         yield buffer;
+      }
+      if (onProgress != null) {
+        onProgress(
+          totalBytesReceived,
+          response.data.contentLength,
+        );
       }
     }
   } catch (e) {
-    print("Failed to decrypt media: $e");
+    log("Failed to decrypt stream: $e");
+    if (e is DeezerException) {
+      rethrow;
+    } else {
+      throw DeezerException(
+        type: DeezerExceptionType.decryptionFailed,
+        message: "Failed to decrypt stream: $e",
+      );
+    }
   }
 }
